@@ -8,7 +8,27 @@ def norm_inverse_mat(mat):
 	return norm
 
 
-def norm_inverse_mat_pseudo(mat, val_idx, e):
+
+def inverse_mat_pseudo_1st(mat, val_idx, e):
+	'''
+		first definition of pseudospectra
+		
+		sig_e(A) is the set of z \in C such that
+		|| (zI-A)^{-1}|| > e^{-1}		
+	
+	'''
+
+
+
+def inverse_mat_pseudo_2nd(mat, val_idx, e):
+	'''
+		second definition of pseudospectra
+
+		sig_e(A) is the set of z \in C such that
+		z \in sig(A+E)
+		for some E \in C^NxN with ||E|| < e	
+
+	'''
 	size = mat.shape[0]
 	I = np.identity(size)
 	val, vec = np.linalg.eig(mat)
@@ -22,7 +42,15 @@ def norm_inverse_mat_pseudo(mat, val_idx, e):
 	return norm, np.linalg.eigvals(mat)
 
 
+def inverse_mat_pseudo_3rd(mat, val_idx, e):
+	'''
+		third definition of pseudospectra
 
+		sig_e(A) is the set of z \in C such that
+		||(zI-A)v|| < e
+		for some v \in C^/n with ||v||=1
+
+	'''
 
 if __name__ == '__main__':
 	a = np.random.rand(3,3)
